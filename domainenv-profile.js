@@ -25,9 +25,8 @@ var dummy = {
 var METHODS = ['start'];
 METHODS.forEach(function (method) {
     exports[method] = function () {
-        var env = domainenv.active();
-        if (!env || !env.profile) return dummy;
-
-        return env.profile[method].apply(env.profile, arguments);
+        var d = process.domain;
+        if (!d || !d.profile) return dummy;
+        return d.profile[method].apply(d.profile, arguments);
     };
 });

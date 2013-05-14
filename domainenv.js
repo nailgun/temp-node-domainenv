@@ -1,8 +1,8 @@
 var domain = require('domain'),
-    _ = require('underscore');
+    _ = require('lodash');
 
 exports.active = function () {
-    return domain.active && domain.active.env;
+    return process.domain && process.domain.env;
 };
 
 exports.create = function () {
